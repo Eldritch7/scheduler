@@ -11,6 +11,12 @@ import DayListItem from "components/DayListItem";
 import DayList from "components/DayList";
 import InterviewerListItem from "components/InterviewerListItem";
 import InterviewerList from "components/InterviewerList";
+import Appointment from "components/Appointment/index.js";
+
+
+
+
+
 
 //Button Stories
 storiesOf("Button", module)
@@ -29,6 +35,20 @@ storiesOf("Button", module)
     </Button>
   ));
 
+   //Appointment Stories
+   storiesOf("Appointment", module)
+   .addParameters({
+     backgrounds: [{ name: "white", value: "#fff", default: true }]
+   })
+   .add("Appointment", () => (
+   <Appointment 
+   />
+   ))
+   .add("Appointment with a Time", () => (
+     <Appointment
+     time={"12pm"}
+     />
+   ))
 //Day List Item stories
   storiesOf("DayListItem", module) //Initiates Storybook and registers our DayListItem component
   .addParameters({
@@ -144,3 +164,5 @@ storiesOf("Button", module)
             onChange={action("onChange")}
           />
         ));
+
+       
