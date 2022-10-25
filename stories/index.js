@@ -120,6 +120,16 @@ storiesOf("Button", module)
       <Appointment time="5pm" />
       </Fragment>
 ))
+    .add("Appointment Booked", () => (
+    <Fragment>
+      <Appointment
+      id={1}
+      time="4pm"
+      interview={{ student: "Lydia Miller-Jones", interviewer }}
+      />
+      <Appointment time="5pm" />
+    </Fragment>
+))
 //Day List Item stories
   storiesOf("DayListItem", module) //Initiates Storybook and registers our DayListItem component
   .addParameters({
