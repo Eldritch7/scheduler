@@ -1,29 +1,29 @@
-import React, {useState} from "react";
-
+import React, {useState, useEffect} from "react";
+import Axios from "axios";
 import "components/Application.scss";
 
 //Import Components
 import DayList from 'components/DayList';
 import Appointment from 'components/Appointment';
 
-//Mock Data Days
-const days = [
-  {
-    id: 1,
-    name: "Monday",
-    spots: 2,
-  },
-  {
-    id: 2,
-    name: "Tuesday",
-    spots: 5,
-  },
-  {
-    id: 3,
-    name: "Wednesday",
-    spots: 0,
-  },
-];
+// //Mock Data Days
+// const days = [
+//   {
+//     id: 1,
+//     name: "Monday",
+//     spots: 2,
+//   },
+//   {
+//     id: 2,
+//     name: "Tuesday",
+//     spots: 5,
+//   },
+//   {
+//     id: 3,
+//     name: "Wednesday",
+//     spots: 0,
+//   },
+// ];
 
 //Mock Data Appointments
 const appointments = {
@@ -73,6 +73,24 @@ const appointments = {
 export default function Application(props) {
 //useState variables
 const [day, setDay] = useState('Monday');
+//Days State to replace static data
+const [days, setDays] = useState([]);
+//Get days from the server
+
+useEffect(() => {
+  const daysUrl =  `http://localhost:8001/api/days`;
+  Axios.get(daysUrl).then(response => {
+
+    console.log(`response:`, response);
+    setDays([...response.data]);
+    console.log(`response.data in days:`, response.data);
+  })
+
+}, []);
+
+
+
+
 //Convert Data Object to Array of appointments
 const appointmentsArray = Object.values(appointments).map(appointment => {
   return (
