@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import Axios from "axios";
+import Axios from '../../node_modules/axios/index';
 import "components/Application.scss";
 
 //Import Components
