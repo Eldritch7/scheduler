@@ -35,3 +35,28 @@ let results = {
 }
   return results;
 }
+
+
+export function getInterviewersForDay(state, day) {
+  let results = [];
+  let interviewersArray = [];
+
+  if(!state.days) {
+    return [];
+  }
+
+  state.days.map(aDay => {
+    if (aDay.name === day) {
+      interviewersArray= (aDay.interviewers);
+    }
+  })
+
+
+for (let num of interviewersArray) {
+  let placeholder = num.toString(); 
+  results.push(state.interviewers[placeholder]);
+}
+  return results;
+}
+
+

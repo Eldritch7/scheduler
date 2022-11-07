@@ -14,6 +14,8 @@ import useVisualMode from "hooks/useVisualMode";
 
 
 
+
+
 export default function Appointment(props) {
   //Modes
 const EMPTY = "EMPTY";
@@ -40,8 +42,9 @@ time={props.time}
 )}
 {mode === CREATE && (
         <Form 
-          interviewers={[]}
+          interviewers={props.interviewers}
           onCancel = {back}
+          
         />
       )}
 {/* {props.interview ? <Show 

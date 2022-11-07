@@ -7,51 +7,7 @@ import DayList from 'components/DayList';
 import Appointment from 'components/Appointment';
 
 //Helper Functions
-import { getAppointmentsForDay, getInterview } from "helpers/selectors";
-
-
-
-// //Mock Data Appointments
-// const appointments = {
-//   "1": {
-//     id: 1,
-//     time: "12pm",
-//   },
-//   "2": {
-//     id: 2,
-//     time: "1pm",
-//     interview: {
-//       student: "Lydia Miller-Jones",
-//       interviewer:{
-//         id: 3,
-//         name: "Sylvia Palmer",
-//         avatar: "https://i.imgur.com/LpaY82x.png",
-//       }
-//     }
-//   },
-//   "3": {
-//     id: 3,
-//     time: "2pm",
-//   },
-//   "4": {
-//     id: 4,
-//     time: "3pm",
-//     interview: {
-//       student: "Archie Andrews",
-//       interviewer:{
-//         id: 4,
-//         name: "Cohana Roy",
-//         avatar: "https://i.imgur.com/FK8V841.jpg",
-//       }
-//     }
-//   },
-//   "5": {
-//     id: 5,
-//     time: "4pm",
-//   }
-// };
-
-
+import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "helpers/selectors";
 
 
 //Application
@@ -64,6 +20,10 @@ export default function Application(props) {
     appointments: {},
     interviewers: {}
   });
+
+  //Using Helper functions:
+  //Daily Interviewers - hold interviewers for specific day
+  const dailyInterviewers = getInterviewersForDay(state, state.day);
 //Daily Appoinments - hold appointments for specific day
 const dailyAppointments = getAppointmentsForDay(state, state.day);
 
@@ -102,6 +62,7 @@ useEffect(() => {
 
 //updating
 const appointments = getAppointmentsForDay(state, state.day);
+const interviewers = getInterviewersForDay(state, state.day);
 
 const schedule = appointments.map((appointment) => {
   const interview = getInterview(state, appointment.interview);
@@ -112,6 +73,7 @@ const schedule = appointments.map((appointment) => {
       id={appointment.id}
       time={appointment.time}
       interview={interview}
+      interviewers={interviewers}
     />
   );
 });
