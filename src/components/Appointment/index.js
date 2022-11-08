@@ -24,6 +24,7 @@ const CREATE = "CREATE";
 const SAVING = "SAVING";
 const DELETING = "DELETING";
 const CONFIRM = "CONFIRM";
+const EDIT = "EDIT";
 
 //Passing the mode to visual Mode
 const { mode, transition, back } = useVisualMode(
@@ -66,6 +67,7 @@ time={props.time}
     student={props.interview.student}
     interviewer={props.interview.interviewer}
     onDelete={() => transition(CONFIRM)}
+    onEdit={() => transition(EDIT)}
   />
 )}
 {mode === CREATE && (
@@ -90,6 +92,15 @@ message = "Saving..."
   onCancel = {back}
   />
 )}
+ {mode === EDIT && (
+        <Form 
+          name={props.interview.student}
+          interviewer={props.interview.interviewer.id}
+          interviewers={props.interviewers}
+          onCancel = {back}
+          onSave = {save}
+        />
+      )}
 
 
 

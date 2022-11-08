@@ -64,11 +64,6 @@ export default function Application(props) {
       );
   };
 
-  //Using Helper functions:
-  //Daily Interviewers - hold interviewers for specific day
-  //const dailyInterviewers = getInterviewersForDay(state, state.day);
-//Daily Appoinments - hold appointments for specific day
-//const dailyAppointments = getAppointmentsForDay(state, state.day);
 
   //setDay function
 const setDay = day => setState({ ...state, day });
