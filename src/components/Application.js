@@ -21,11 +21,54 @@ export default function Application(props) {
     interviewers: {}
   });
 
+  //Book interview function
+  function bookInterview(id, interview) {
+    console.log(id, interview);
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview }
+    };
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+    const appointmentsUrl = `/api/appointments/${id}`;
+    return axios.put(appointmentsUrl, appointment)
+    .then(
+    setState({
+      ...state,
+      appointments
+    })
+  );
+  }
+
+  //Cancel Interview function
+  const cancelInterview = (id) => {
+    const appointment = {
+      ...state.appointments[id],
+      interview: null
+    };
+
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+  
+    return axios
+      .delete(`api/appointments/${id}`)
+      .then(
+          setState({
+            ...state,
+            appointments
+          })
+      );
+  };
+
   //Using Helper functions:
   //Daily Interviewers - hold interviewers for specific day
-  const dailyInterviewers = getInterviewersForDay(state, state.day);
+  //const dailyInterviewers = getInterviewersForDay(state, state.day);
 //Daily Appoinments - hold appointments for specific day
-const dailyAppointments = getAppointmentsForDay(state, state.day);
+//const dailyAppointments = getAppointmentsForDay(state, state.day);
 
   //setDay function
 const setDay = day => setState({ ...state, day });
@@ -74,19 +117,12 @@ const schedule = appointments.map((appointment) => {
       time={appointment.time}
       interview={interview}
       interviewers={interviewers}
+      bookInterview={bookInterview}
+      cancelInterview={cancelInterview}
     />
   );
 });
-// //Convert Data Object to Array of appointments
-// const appointmentsArray = dailyAppointments.map(appointment => {
-//   return (
-//     <Appointment
-//     key={appointment.id}
-//     {...appointment}
-//     />
 
-//   )
-// });
 
 
   return (

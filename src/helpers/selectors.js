@@ -25,6 +25,9 @@ export function getInterview(state, interview) {
   if (!interview) {
     return null;
   }
+  if(interview.interviewer === null) {
+    return null;
+  }
 let thisInterviewer = interview.interviewer;
 let thisInterviewerString = thisInterviewer.toString();
 let interviewerData = state.interviewers[thisInterviewerString];
