@@ -42,21 +42,19 @@ function save(name, interviewer) {
   props.bookInterview(props.id, interview)
   //.then(transition(SAVING))
   .then(() => transition(SHOW))
-  .catch(error => {
-    transition(ERROR_SAVE, true)
-      console.log(error);
-    })
+  .catch(error => transition(ERROR_SAVE, true)
+      
+    )
 }
 // Delete Function
-function cancelInterview(id) {
-  transition(DELETING);
-  props.cancelInterview(props.id)
-  //.then(transition(DELETING, true))
-  .then(() => transition(EMPTY))
-  .catch(error => {
-    transition(ERROR_DELETE, true)
-    console.log(error);
-  })
+function cancelInterview(event) {
+
+  transition(DELETING, true);
+  props
+   .cancelInterview(props.id)
+   .then(() => transition(EMPTY))
+   .catch(error => transition(ERROR_DELETE, true));
+ 
 }
 
   //returning components
@@ -71,7 +69,7 @@ time={props.time}
   <Show
     student={props.interview.student}
     interviewer={props.interview.interviewer}
-    onDelete={() => transition(CONFIRM, true)}
+    onDelete={() => transition(CONFIRM)}
     onEdit={() => transition(EDIT)}
   />
 )}
