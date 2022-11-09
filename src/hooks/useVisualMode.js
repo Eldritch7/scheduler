@@ -16,7 +16,7 @@ export default function useVisualMode(initialMode) {
           } else {
             setHistory(prev => [...prev, newMode]);
           }
-    
+    console.log('history in transition', history);
     
   }
 
@@ -26,14 +26,16 @@ export default function useVisualMode(initialMode) {
       //set history to the second last element (previous mode)
       setMode(history[history.length - 2]);
       //replace history array with itself minus the last element - removes the last element
-      setHistory(prev => [...prev.slice(0, prev.length - 1)]);
+      setHistory(prev => [...prev.slice(0, prev.length - 1) ]);
       
       
       //just go back to the start if you've only moved one page forward - first given mode
-      } else if (history.length === 1) {
-        setMode(initialMode);
-        setHistory([initialMode]);
-      }
+      } 
+      // else if (history.length === 1) {
+      //   setMode(initialMode);
+      //   setHistory([initialMode]);
+      // }
+      console.log('history in back', history);
   };
  
   return { mode, transition, back };

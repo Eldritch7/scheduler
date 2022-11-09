@@ -80,6 +80,7 @@ function getSpotsFromInterview(id, interview) {
       appointments,
       days
     })
+   
   );
   }
 
@@ -107,7 +108,7 @@ function getSpotsFromInterview(id, interview) {
   
     return axios
       .delete(`api/appointments/${id}`)
-      .then(
+      .then(() =>
           setState({
             ...state,
             appointments,

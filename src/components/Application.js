@@ -30,7 +30,9 @@ const schedule = appointments.map((appointment) => {
 
   return (
     <Appointment
+      
       key={appointment.id}
+      {...appointments}
       id={appointment.id}
       time={appointment.time}
       interview={interview}

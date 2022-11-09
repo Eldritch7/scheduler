@@ -54,7 +54,7 @@ function cancelInterview(event) {
    .cancelInterview(props.id)
    .then(() => transition(EMPTY))
    .catch(error => transition(ERROR_DELETE, true));
- 
+  
 }
 
   //returning components
@@ -97,7 +97,7 @@ message = "Saving"
   <Confirm
   message = "Are you sure?"
   onConfirm = {cancelInterview}
-  onCancel = {back}
+  onCancel = {() => back(EMPTY)}
   />
 )}
  {mode === EDIT && (
