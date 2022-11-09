@@ -1,5 +1,7 @@
 import React, { Fragment } from "react";
+//Style
 import "components/Appointment/styles.scss";
+//Components
 import Empty from "components/Appointment/Empty";
 import Header from "components/Appointment/Header";
 import Show from "components/Appointment/Show";
@@ -8,13 +10,8 @@ import Status from "components/Appointment/Status";
 import Confirm from "components/Appointment/Confirm";
 import Error from "components/Appointment/Error";
 
-
+//Custom Hooks
 import useVisualMode from "hooks/useVisualMode";
-
-
-
-
-
 
 export default function Appointment(props) {
   //Modes
@@ -25,6 +22,8 @@ const SAVING = "SAVING";
 const DELETING = "DELETING";
 const CONFIRM = "CONFIRM";
 const EDIT = "EDIT";
+const ERROR_SAVE = "ERROR_SAVE";
+const ERROR_DELETE = "ERROR_DELETE";
 
 //Passing the mode to visual Mode
 const { mode, transition, back } = useVisualMode(
@@ -36,20 +35,26 @@ function save(name, interviewer) {
     student: name,
     interviewer
   };
-  transition(SAVING)
+
+  transition(SAVING);
+  
   console.log('saving transition');
-  Promise.resolve(props.bookInterview(props.id, interview))
-  .then(transition(SHOW))
-  .catch(function (error) {
+  props.bookInterview(props.id, interview)
+  //.then(transition(SAVING))
+  .then(() => transition(SHOW))
+  .catch(error => {
+    transition(ERROR_SAVE, true)
       console.log(error);
     })
 }
 // Delete Function
 function cancelInterview(id) {
   transition(DELETING);
-  Promise.resolve(props.cancelInterview(props.id))
-  .then(transition(EMPTY))
+  props.cancelInterview(props.id)
+  //.then(transition(DELETING, true))
+  .then(() => transition(EMPTY))
   .catch(error => {
+    transition(ERROR_DELETE, true)
     console.log(error);
   })
 }
@@ -66,7 +71,7 @@ time={props.time}
   <Show
     student={props.interview.student}
     interviewer={props.interview.interviewer}
-    onDelete={() => transition(CONFIRM)}
+    onDelete={() => transition(CONFIRM, true)}
     onEdit={() => transition(EDIT)}
   />
 )}
@@ -82,7 +87,12 @@ time={props.time}
 
 {mode === SAVING && (
   <Status
-message = "Saving..."
+message = "Saving"
+  />
+)}
+{mode === DELETING && (
+  <Status
+  message = "Deleting"
   />
 )}
 {mode === CONFIRM && (
@@ -99,6 +109,19 @@ message = "Saving..."
           interviewers={props.interviewers}
           onCancel = {back}
           onSave = {save}
+        />
+      )}
+
+      {mode === ERROR_SAVE && (
+      <Error
+      message = "Failed to Save"
+      onClose = {back}
+      />
+      )}
+      {mode === ERROR_DELETE && (
+        <Error 
+        message = "Failed to Delete"
+        onClose = {back}
         />
       )}
 

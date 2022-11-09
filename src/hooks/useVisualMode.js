@@ -10,7 +10,8 @@ export default function useVisualMode(initialMode) {
     setMode(newMode);
     //if replace has a true value, replace the history array with itself, minus the last element, plus the new mode element
     if (replace) {
-            setHistory(prev => [...prev.slice(0, prev.length - 1), newMode]);
+      //made a change here
+            setHistory(prev => [...prev.slice(0, prev.length - 2), newMode]);
           //otherwise if replace is the default false value, replace the history array with itself plus the new mode
           } else {
             setHistory(prev => [...prev, newMode]);
