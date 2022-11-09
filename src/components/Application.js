@@ -31,15 +31,16 @@ const schedule = appointments.map((appointment) => {
   return (
     <Appointment
       key={appointment.id}
-      {...appointment}
+      id={appointment.id}
+      time={appointment.time}
       interview={interview}
       interviewers={interviewers}
       bookInterview={bookInterview}
       cancelInterview={cancelInterview}
     />
   );
-}
-);
+});
+
 
 
 
@@ -53,7 +54,11 @@ return (
       />
       <hr className="sidebar__separator sidebar--centered" />
       <nav className="sidebar__menu">
-        <DayList days={state.days} day={state.day} setDay={setDay} />
+        <DayList 
+        days={state.days} 
+        day={state.day} 
+        onChange={setDay} 
+        />
       </nav>
       <img
         className="sidebar__lhl sidebar--centered"
