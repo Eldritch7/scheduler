@@ -9,7 +9,7 @@ export default function useApplicationData(initial) {
     appointments: {},
     interviewers: {}
   });
-
+console.log("LOOK STATE", state);
 
 function getDayIdFromInterview(id, interview) {
   const days = [...state.days];
