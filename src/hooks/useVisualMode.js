@@ -16,7 +16,7 @@ export default function useVisualMode(initialMode) {
           } else {
             setHistory(prev => [...prev, newMode]);
           }
-    console.log('history in transition', history);
+    //console.log('history in transition', history);
     
   }
 
@@ -30,12 +30,11 @@ export default function useVisualMode(initialMode) {
       
       
       //just go back to the start if you've only moved one page forward - first given mode
-      } 
-      // else if (history.length === 1) {
-      //   setMode(initialMode);
-      //   setHistory([initialMode]);
-      // }
-      console.log('history in back', history);
+      } else if (history.length === 1) {
+        setMode(initialMode);
+        setHistory([initialMode]);
+      }
+      //console.log('history in back', history);
   };
  
   return { mode, transition, back };
