@@ -9,7 +9,7 @@ export default function InterviewerListItem(props) {
     "interviewers__item--selected" : props.selected
     }
     );
-    console.log(props.id);
+    //console.log(props.id);
     let liClass = classNames('interviewers__item-image', {
       'interviewers__item-image--selected' : props.selected
 

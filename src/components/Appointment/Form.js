@@ -9,7 +9,8 @@ import "components/Appointment/styles.scss";
 export default function Empty(props) {
 //Hooks
   const [student, setStudent] = useState(props.student || "");
-const [interviewer, setInterviewer] = useState(props.interviewer || null);
+  const [interviewer, setInterviewer] = useState(props.interviewer || null);
+  const [error, setError] = useState("");
 
 //Making a reset function
 const reset = () => {
@@ -25,6 +26,22 @@ const reset = () => {
     props.onCancel();
   }
 
+  //Does the form have a name and interviewer
+  function validate() {
+    //console.log('LOOKHERE student', student);
+    if (!student) {
+      setError("Student name cannot be blank");
+      return;
+    }
+    if (interviewer === null) {
+      setError("Please select an interviewer");
+      return;
+    }
+    setError("");
+    //props.onSave(props.name, interviewer);
+    props.onSave(student, interviewer)
+  }
+
   return ( 
    
 <main className="appointment__card appointment__card--create">
@@ -32,17 +49,24 @@ const reset = () => {
     <form autoComplete="off" onSubmit={(e) => e.preventDefault()}>
       <input
         className="appointment__create-input text--semi-bold"
-        name={props.name}
+        name="name"
         type="text"
         placeholder="Enter Student Name"
         value={student}
-        onChange={(e) => setStudent(e.target.value)}
-        
-        /*
-          This must be a controlled component
-          your code goes here
-        */
+        onChange={event => {
+          setStudent(event.target.value);
+        }}
+        data-testid="student-name-input"
+        // className="appointment__create-input text--semi-bold"
+        // //name="name" 
+        // name={props.name}
+        // type="text"
+        // placeholder="Enter Student Name"
+        // value={student}
+        // onChange={(e) => setStudent(e.target.value)}
+        // data-testid="student-name-input"
       />
+      <section className="appointment__validation">{error}</section>
     </form>
     <InterviewerList 
     interviewers={props.interviewers}
@@ -54,7 +78,7 @@ const reset = () => {
   <section className="appointment__card-right">
     <section className="appointment__actions">
       <Button danger onClick={cancel}>Cancel</Button>
-      <Button confirm onClick={(e)=> {props.onSave(student, interviewer)}}>Save</Button>
+      <Button confirm onClick={validate}>Save</Button>
     </section>
   </section>
 </main>
