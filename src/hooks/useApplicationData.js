@@ -127,9 +127,9 @@ const setDays = (days) => {
 //Get days from the server
 
 useEffect(() => {
-  const daysUrl =  `http://localhost:8001/api/days`;
-  const appointmentsUrl = `http://localhost:8001/api/appointments`;
-  const interviewersUrl = `http://localhost:8001/api/interviewers`;
+  const daysUrl =  `/api/days`;
+  const appointmentsUrl = `/api/appointments`;
+  const interviewersUrl = `/api/interviewers`;
 
   Promise.all([
     axios.get(daysUrl),
