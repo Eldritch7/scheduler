@@ -9,11 +9,10 @@ export default function useApplicationData(initial) {
     appointments: {},
     interviewers: {}
   });
-console.log("LOOK STATE", state);
+
 
 function getDayIdFromInterview(id, interview) {
   const days = [...state.days];
-  // console.log('days', days);
   let thisDayArray = days.map(day => {
   for (let appt of day.appointments) {
     if (appt === id)
@@ -30,14 +29,9 @@ function getSpotsFromInterview(id, interview) {
   let days = state.days;
   let spots = 0;
   let dayId = getDayIdFromInterview(id, interview);
-  // console.log(dayId, `dayId`);
-  // console.log('state.days.dayID', days[dayId-1].appointments);
   let appointmentArray = days[dayId-1].appointments;
-  // console.log(appointmentArray, `appointmentArray`);
   
   for (let app of appointmentArray) {
-  // console.log(`app`,app);
-  // console.log(state.appointments[app].interview)
   
   if (!state.appointments[app].interview) {
     spots += 1;
@@ -45,7 +39,6 @@ function getSpotsFromInterview(id, interview) {
   if (spots<1) {
     spots = 0;
   }
-  console.log(`spots`, spots);
 }
   return spots;
 }
@@ -53,7 +46,6 @@ function getSpotsFromInterview(id, interview) {
   //Book interview function
  
   function bookInterview(id, interview) {
-    // console.log(id, interview);
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview }
@@ -65,11 +57,8 @@ function getSpotsFromInterview(id, interview) {
 
     let dayId = getDayIdFromInterview(id, interview);
     let spotsLeft = getSpotsFromInterview(id, interview);
-    // console.log('spotsLeft', spotsLeft);
     let thisDayData = state.days[dayId-1];
     let newDayData = {...thisDayData, spots: getSpotsFromInterview(id, interview)-1}
-    // console.log('thisDayData',thisDayData);
-    // console.log('newDayData', newDayData);
     let days = [...state.days.slice(0, dayId -1),  newDayData, ...state.days.slice( dayId, state.days.length)];
 
     const appointmentsUrl = `/api/appointments/${id}`;
@@ -98,11 +87,8 @@ function getSpotsFromInterview(id, interview) {
 
     let dayId = getDayIdFromInterview(id, interview);
     let spotsLeft = getSpotsFromInterview(id, interview);
-    // console.log('spotsLeft', spotsLeft);
     let thisDayData = state.days[dayId-1];
     let newDayData = {...thisDayData, spots: getSpotsFromInterview(id, interview) +1}
-    // console.log('thisDayData',thisDayData);
-    // console.log('newDayData', newDayData);
     let days = [...state.days.slice(0, dayId -1),  newDayData, ...state.days.slice( dayId, state.days.length)];
     
   
