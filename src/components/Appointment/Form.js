@@ -23,7 +23,6 @@ export default function Empty(props) {
 
   //Does the form have a name and interviewer
   function validate() {
-    //console.log('LOOKHERE student', student);
     if (!student) {
       setError("Student name cannot be blank");
       return;
@@ -58,7 +57,6 @@ export default function Empty(props) {
           interviewers={props.interviewers}
           interviewer={interviewer}
           onChange={setInterviewer}
-          /* your code goes here */
         />
       </section>
       <section className="appointment__card-right">
