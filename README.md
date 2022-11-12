@@ -27,11 +27,13 @@ npm run storybook
 ## Saving Interviews
 ![Alt Text](ReadMeFiles/SaveSuccess.gif)
 
+## Deleting Interviews
+![Alt Text](ReadMeFiles/DeletingSuccess.gif)
+
+
 ## Error Handling
 ![Alt Text](ReadMeFiles/SaveError.gif)
 
-## Deleting Interviews
-![Alt Text](ReadMeFiles/DeletingSuccess.gif)
 
 ## Dependencies
 
