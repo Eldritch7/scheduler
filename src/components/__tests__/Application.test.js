@@ -121,7 +121,7 @@ it("loads data, edits an interview and keeps the spots remaining for Monday the 
     queryByText(day, "Monday")
   );
 
- expect(getByText(day, "1 spots remaining")).toBeInTheDocument();
+ expect(getByText(day, "1 spot remaining")).toBeInTheDocument();
 
 
   debug();

@@ -39,6 +39,40 @@ export default function useApplicationData(initial) {
     }
     return spots;
   }
+    //EXTRA Edit Interview Function
+
+    function editInterview(id, interview) {
+      const appointment = {
+        ...state.appointments[id],
+        interview: { ...interview },
+      };
+      const appointments = {
+        ...state.appointments,
+        [id]: appointment,
+      };
+  
+      // let dayId = getDayIdFromInterview(id, interview);
+      // let spotsLeft = getSpotsFromInterview(id, interview);
+      // let thisDayData = state.days[dayId - 1];
+      // let newDayData = {
+      //   ...thisDayData,
+      //   spots: getSpotsFromInterview(id, interview) - 1,
+      // };
+      // let days = [
+      //   ...state.days.slice(0, dayId - 1),
+      //   newDayData,
+      //   ...state.days.slice(dayId, state.days.length),
+      // ];
+  
+      const appointmentsUrl = `/api/appointments/${id}`;
+      return axios.put(appointmentsUrl, appointment).then(
+        setState({
+          ...state,
+          appointments,
+          //days,
+        })
+      );
+    }
 
   //Book interview function
 
@@ -70,7 +104,7 @@ export default function useApplicationData(initial) {
       setState({
         ...state,
         appointments,
-        days,
+        days
       })
     );
   }
@@ -139,5 +173,5 @@ export default function useApplicationData(initial) {
       console.log(all[2]); // third
     });
   }, []);
-  return { state, setDay, bookInterview, cancelInterview };
+  return { state, setDay, bookInterview, cancelInterview, editInterview };
 }

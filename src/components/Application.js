@@ -18,7 +18,7 @@ import useApplicationData from "../hooks/useApplicationData";
 
 export default function Application(props) {
   //useApplicationData
-  const { state, setDay, bookInterview, cancelInterview } =
+  const { state, setDay, bookInterview, cancelInterview, editInterview } =
     useApplicationData();
 
   //updating
@@ -38,6 +38,7 @@ export default function Application(props) {
         interviewers={interviewers}
         bookInterview={bookInterview}
         cancelInterview={cancelInterview}
+        editInterview={editInterview}
       />
     );
   });
