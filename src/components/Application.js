@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 //import axios from '../../node_modules/axios/index';
 import "components/Application.scss";
 

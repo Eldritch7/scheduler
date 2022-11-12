@@ -1,4 +1,4 @@
-import react, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function useApplicationData(initial) {
@@ -51,18 +51,6 @@ export default function useApplicationData(initial) {
         [id]: appointment,
       };
   
-      // let dayId = getDayIdFromInterview(id, interview);
-      // let spotsLeft = getSpotsFromInterview(id, interview);
-      // let thisDayData = state.days[dayId - 1];
-      // let newDayData = {
-      //   ...thisDayData,
-      //   spots: getSpotsFromInterview(id, interview) - 1,
-      // };
-      // let days = [
-      //   ...state.days.slice(0, dayId - 1),
-      //   newDayData,
-      //   ...state.days.slice(dayId, state.days.length),
-      // ];
   
       const appointmentsUrl = `/api/appointments/${id}`;
       return axios.put(appointmentsUrl, appointment).then(
