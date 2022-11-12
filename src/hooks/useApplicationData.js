@@ -39,28 +39,27 @@ export default function useApplicationData(initial) {
     }
     return spots;
   }
-    //EXTRA Edit Interview Function
+  //EXTRA Edit Interview Function
 
-    function editInterview(id, interview) {
-      const appointment = {
-        ...state.appointments[id],
-        interview: { ...interview },
-      };
-      const appointments = {
-        ...state.appointments,
-        [id]: appointment,
-      };
-  
-  
-      const appointmentsUrl = `/api/appointments/${id}`;
-      return axios.put(appointmentsUrl, appointment).then(
-        setState({
-          ...state,
-          appointments,
-          //days,
-        })
-      );
-    }
+  function editInterview(id, interview) {
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview },
+    };
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment,
+    };
+
+    const appointmentsUrl = `/api/appointments/${id}`;
+    return axios.put(appointmentsUrl, appointment).then(
+      setState({
+        ...state,
+        appointments,
+        //days,
+      })
+    );
+  }
 
   //Book interview function
 
@@ -92,7 +91,7 @@ export default function useApplicationData(initial) {
       setState({
         ...state,
         appointments,
-        days
+        days,
       })
     );
   }

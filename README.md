@@ -23,25 +23,25 @@ npm test
 npm run storybook
 ```
 ## Interview Scheduler
-![View of UI](ReadMeFiles/InterviewScheduler.png)
+![View of UI](docs/InterviewScheduler.png)
 
 ## Saving Interviews
-![Saving Interview gif](ReadMeFiles/SaveSuccess.gif)
+![Saving Interview gif](docs/SaveSuccess.gif)
 
 ## Deleting Interviews
-![Deleting an Interview gif](ReadMeFiles/DeletingSuccess.gif)
+![Deleting an Interview gif](docs/DeletingSuccess.gif)
 
 ## Editing Interviews
-![Editing an Interview gif](ReadMeFiles/Editing.gif)
+![Editing an Interview gif](docs/Editing.gif)
 
 ## Error Handling
-![Handling and Error Gif](ReadMeFiles/SaveError.gif)
+![Handling and Error Gif](docs/SaveError.gif)
 
 ## Building Assets in Storybook
-![Storybook Screenshot](ReadMeFiles/storybook.png)
+![Storybook Screenshot](docs/storybook.png)
 
 ## Testing with Cypress
-![Cypress Test](ReadMeFiles/cypress.png)
+![Cypress Test](docs/cypress.png)
 
 
 ## Dependencies

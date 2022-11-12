@@ -82,7 +82,7 @@ export default {
       });
     }
   }),
-
+  //Put request
   put: jest.fn((url) => {
     if (url === "/api/appointments/1") {
       return Promise.resolve({
@@ -97,6 +97,7 @@ export default {
       });
     }
   }),
+  //Delete request
   delete: jest.fn((url) => {
     if (url === "/api/appointments/2") {
       return Promise.resolve({
