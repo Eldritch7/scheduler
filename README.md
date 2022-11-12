@@ -37,6 +37,12 @@ npm run storybook
 ## Error Handling
 ![Handling and Error Gif](ReadMeFiles/SaveError.gif)
 
+## Building Assets in Storybook
+![Storybook Screenshot](ReadMeFiles/storybook.png)
+
+## Testing with Cypress
+![Cypress Test](ReadMeFiles/cypress.png)
+
 
 ## Dependencies
 
