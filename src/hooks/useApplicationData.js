@@ -100,7 +100,7 @@ export default function useApplicationData(initial) {
       ...state.days.slice(dayId, state.days.length),
     ];
 
-    return axios.delete(`api/appointments/${id}`).then(() =>
+    return axios.delete(`/api/appointments/${id}`).then(() =>
       setState({
         ...state,
         appointments,
