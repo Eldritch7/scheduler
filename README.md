@@ -22,19 +22,20 @@ npm test
 ```sh
 npm run storybook
 ```
-
+## Interview Scheduler
+![View of UI](ReadMeFiles/InterviewScheduler.png)
 
 ## Saving Interviews
-![Alt Text](ReadMeFiles/SaveSuccess.gif)
+![Saving Interview gif](ReadMeFiles/SaveSuccess.gif)
 
 ## Deleting Interviews
-![Alt Text](ReadMeFiles/DeletingSuccess.gif)
+![Deleting an Interview gif](ReadMeFiles/DeletingSuccess.gif)
 
 ## Editing Interviews
-![Alt Text](ReadMeFiles/Editing.gif)
+![Editing an Interview gif](ReadMeFiles/Editing.gif)
 
 ## Error Handling
-![Alt Text](ReadMeFiles/SaveError.gif)
+![Handling and Error Gif](ReadMeFiles/SaveError.gif)
 
 
 ## Dependencies
