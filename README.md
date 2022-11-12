@@ -21,6 +21,11 @@ npm test
 ```sh
 npm run storybook
 ```
+## Saving Interviews
+![Alt Text](ReadMeFiles/SaveSuccess.gif)
+
+## Error Handling
+![Alt Text](ReadMeFiles/SaveError.gif)
 
 ## Dependencies
 
@@ -31,8 +36,7 @@ npm run storybook
 - react-dom
 - react-scripts
 
-## Saving Error Handling
-![Alt Text](ReadMeFiles/SaveError.gif)
+
 
 ## Dev Dependencies
   - @babel/core
@@ -50,6 +54,6 @@ npm run storybook
   - sass
 
   ## Setup
-  1.
-  2.
-  3.
+  1. Fork and Clone repository. npm -i all dependencies 
+  2. Fork, clone and setup this api server: https://github.com/lighthouse-labs/scheduler-api . Make sure it's in a new directory.
+  3. 
