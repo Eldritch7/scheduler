@@ -30,6 +30,8 @@ npm run storybook
 ## Deleting Interviews
 ![Alt Text](ReadMeFiles/DeletingSuccess.gif)
 
+## Editing Interviews
+![Alt Text](ReadMeFiles/Editing.gif)
 
 ## Error Handling
 ![Alt Text](ReadMeFiles/SaveError.gif)
