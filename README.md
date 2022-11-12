@@ -1,8 +1,9 @@
 # Interview Scheduler
 
 ## Setup
-
-Install dependencies with `npm install`.
+1. Fork and Clone repository. npm -i all dependencies 
+2. Fork, clone and setup this api server: https://github.com/lighthouse-labs/scheduler-api . Make sure it's in a separate directory.
+3. Run both the client and the server at once.
 
 ## Running Webpack Development Server
 
@@ -21,11 +22,16 @@ npm test
 ```sh
 npm run storybook
 ```
+
+
 ## Saving Interviews
 ![Alt Text](ReadMeFiles/SaveSuccess.gif)
 
 ## Error Handling
 ![Alt Text](ReadMeFiles/SaveError.gif)
+
+## Deleting Interviews
+![Alt Text](ReadMeFiles/DeletingSuccess.gif)
 
 ## Dependencies
 
@@ -53,7 +59,4 @@ npm run storybook
   - react-test-renderer
   - sass
 
-  ## Setup
-  1. Fork and Clone repository. npm -i all dependencies 
-  2. Fork, clone and setup this api server: https://github.com/lighthouse-labs/scheduler-api . Make sure it's in a new directory.
-  3. 
+
