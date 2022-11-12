@@ -123,14 +123,77 @@ it("loads data, edits an interview and keeps the spots remaining for Monday the 
 
  expect(getByText(day, "1 spot remaining")).toBeInTheDocument();
 
-
   debug();
 
 });
 
+it("shows the save error when failing to save an appointment", async  () => {
+  axios.put.mockRejectedValueOnce();
+// 1. Render the Application.
+const { container, debug } = render(<Application />);
+
+// 2. Wait until the text "Archie Cohen" is displayed.
+await waitForElement(() => getByText(container, "Archie Cohen"));
+
+// 3. Grabs Appointment Data
+const appointments = getAllByTestId(container, "appointment");
+const appointment = appointments[0];
+
+// 4. Click Add
+fireEvent.click(getByAltText(appointment, "Add"));
+
+// 5. Enter Student Name
+fireEvent.change(getByPlaceholderText(appointment, "Enter Student Name"), {
+    target: { value: "Sylvia Glass" }
+  });
+// 6. Select Interviewer
+fireEvent.click(getByAltText(appointment, "Sylvia Palmer"));
+
+// 7. Click Save
+fireEvent.click(getByText(appointment, "Save"));
+
+// 8. Check that Saving Status works
+expect(getByText(appointment, "Saving")).toBeInTheDocument();
+
+// 9. Check the Error Message Displays
+await waitForElementToBeRemoved(() => getByText(appointment, "Saving"));
+expect(getByText(appointment, "Failed to Save")).toBeInTheDocument();
+
+debug();
 
 });
-//Tests to implement
-// "loads data, edits an interview and keeps the spots remaining for Monday the same"
-// "shows the save error when failing to save an appointment"
-// "shows the delete error when failing to delete an existing appointment"
+
+it("shows the delete error when failing to delete an existing appointment", async () => {
+  axios.delete.mockRejectedValueOnce();
+
+  // 1. Render the Application.
+const { container, debug } = render(<Application />);
+
+// 2. Wait until the text "Archie Cohen" is displayed.
+await waitForElement(() => getByText(container, "Archie Cohen"));
+
+// 4. Click Delete
+const appointment = getAllByTestId(container, "appointment").find(
+  appointment => queryByText(appointment, "Archie Cohen")
+);
+
+fireEvent.click(queryByAltText(appointment, "Delete"));
+
+
+// 5. Check that the confirmation message is shown.
+expect(getByText(appointment, /Are you sure?/i)).toBeInTheDocument();
+// 6. Click the "Confirm" button on the confirmation.
+fireEvent.click(getByText(appointment, "Confirm"));
+// 7. Check that the element with the text "Deleting" is displayed.
+expect(getByText(appointment, "Deleting")).toBeInTheDocument();
+// 8. Wait for Deleting to be Removed
+await waitForElementToBeRemoved(() => getByText(appointment, "Deleting"));
+// 9. Check for Error Message
+expect(getByText(appointment, "Failed to Delete")).toBeInTheDocument();
+
+debug();
+
+});
+
+
+});
